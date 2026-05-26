@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Técnicas Gringas — Tharcy Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --card2: #1c1c1c;
+    --border: #272727;
+    --lilac: #b89fe0;
+    --lilac-soft: rgba(184, 159, 224, 0.12);
+    --lilac-glow: rgba(184, 159, 224, 0.06);
+    --white: #f4f0f8;
+    --muted: #7a7a7a;
+    --muted2: #555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(184, 159, 224, 0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 100% 100%, rgba(184, 159, 224, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 56px 24px 32px;
+    text-align: center;
+  }
+
+  .brand {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--lilac-soft);
+    border: 1px solid rgba(184, 159, 224, 0.3);
+    color: var(--lilac);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(34px, 8vw, 58px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  h1 span {
+    color: var(--lilac);
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 16px auto 0;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 36px auto;
+    max-width: 200px;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-dot { width: 5px; height: 5px; background: var(--lilac); border-radius: 50%; opacity: 0.7; }
+
+  /* ── MAIN ── */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--lilac);
+    font-weight: 700;
+    margin-bottom: 14px;
+    opacity: 0.8;
+  }
+
+  /* ── CARD BASE ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: var(--lilac);
+    margin-bottom: 16px;
+  }
+
+  /* ── PUBLICO CARD ── */
+  .publico-text {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.7;
+  }
+
+  /* ── TECNICAS CARD ── */
+  .tecnicas-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tecnica-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .tecnica-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--lilac-soft);
+    border: 1px solid rgba(184, 159, 224, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .tecnica-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .tecnica-info p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── DIAS CARD ── */
+  .dias-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dia-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--lilac);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+
+  .dia-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lilac);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .dia-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .dia-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .horas-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--lilac-soft);
+    border: 1px solid rgba(184, 159, 224, 0.2);
+    color: var(--lilac);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  /* ── INCLUSO CARD ── */
+  .incluso-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .incluso-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+  }
+
+  .incluso-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--lilac-soft);
+    border: 1px solid rgba(184, 159, 224, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  /* ── PAGAMENTO CARD ── */
+  .pagamento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagamento-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .pagamento-item.destaque {
+    border-color: rgba(184, 159, 224, 0.4);
+    background: var(--lilac-soft);
+  }
+
+  .pag-left {}
+
+  .pag-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .pagamento-item.destaque .pag-label {
+    color: var(--lilac);
+  }
+
+  .pag-desc {
+    font-size: 12px;
+    color: var(--muted2);
+    line-height: 1.5;
+    margin-top: 4px;
+    max-width: 200px;
+  }
+
+  .pag-valor {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  .pagamento-item.destaque .pag-valor {
+    color: var(--lilac);
+  }
+
+  .pag-tag {
+    display: inline-block;
+    background: rgba(184, 159, 224, 0.2);
+    color: var(--lilac);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+
+  /* ── CTA ── */
+  .cta-wrap {
+    text-align: center;
+    padding: 8px 0 16px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  .cta-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px 48px;
+  }
+
+  .footer-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
+    color: var(--lilac);
+    opacity: 0.5;
+  }
+
+  /* ── ANIMATE ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.2s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+
+  @media (max-width: 480px) {
+    header { padding: 40px 20px 24px; }
+    main { padding: 0 16px 60px; }
+    .card { padding: 20px; }
+    .pagamento-item { flex-direction: column; align-items: flex-start; }
+    .pag-valor { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="brand">Tharcy Beauty</p>
+  <div class="badge">Curso Presencial · Individual</div>
+  <h1>Técnicas<br><span>Gringas</span></h1>
+  <p class="subtitle">Para quem já é lash e quer dominar o que o mercado está pedindo agora.</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- PUBLICO -->
+  <div class="card">
+    <div class="section-label">Para quem é</div>
+    <p class="publico-text">
+      Este curso foi feito para lash designers que já dominam o básico e querem evoluir para as técnicas mais procuradas do mercado gringo — com qualidade, precisão e confiança pra atender.
+    </p>
+  </div>
+
+  <!-- TECNICAS -->
+  <div class="card">
+    <div class="section-label">O que você vai aprender</div>
+    <div class="tecnicas-grid">
+
+      <div class="tecnica-item">
+        <div class="tecnica-icon">✨</div>
+        <div class="tecnica-info">
+          <h3>Efeito Wispy</h3>
+          <p>A técnica mais solicitada do momento. Leve, natural e sofisticada.</p>
+        </div>
+      </div>
+
+      <div class="tecnica-item">
+        <div class="tecnica-icon">🦢</div>
+        <div class="tecnica-info">
+          <h3>Variação Cisne</h3>
+          <p>Alongamento dramático e elegante inspirado no mercado europeu.</p>
+        </div>
+      </div>
+
+      <div class="tecnica-item">
+        <div class="tecnica-icon">👼</div>
+        <div class="tecnica-info">
+          <h3>Variação Angel</h3>
+          <p>Acabamento suave e delicado, muito pedido pelas clientes atuais.</p>
+        </div>
+      </div>
+
+      <div class="tecnica-item">
+        <div class="tecnica-icon">🎌</div>
+        <div class="tecnica-info">
+          <h3>Efeito Anime</h3>
+          <p>Tendência gringa em alta — bold, expressivo e cheio de personalidade.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ESTRUTURA -->
+  <div class="card">
+    <div class="section-label">Como são os dias</div>
+    <div class="horas-badge">⏱ 20 horas · 2 dias</div>
+    <div class="dias-grid">
+
+      <div class="dia-item">
+        <div class="dia-num">Dia 01</div>
+        <div class="dia-title">Wispy completo</div>
+        <div class="dia-desc">Teoria + prática de Wispy com as variações Cisne e Angel. Você sai do dia sabendo executar as três.</div>
+      </div>
+
+      <div class="dia-item">
+        <div class="dia-num">Dia 02</div>
+        <div class="dia-title">Anime</div>
+        <div class="dia-desc">Teoria + prática do Efeito Anime. Direto ao ponto, com foco em execução real.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INCLUSO -->
+  <div class="card">
+    <div class="section-label">Tudo que está incluso</div>
+    <div class="incluso-list">
+
+      <div class="incluso-item">
+        <div class="incluso-icon">☕</div>
+        Coffee break nos dois dias
+      </div>
+
+      <div class="incluso-item">
+        <div class="incluso-icon">📜</div>
+        Certificado de conclusão
+      </div>
+      <div class="incluso-item">
+        <div class="incluso-icon">🎁</div>
+        Presentes especiais
+      </div>
+      <div class="incluso-item">
+        <div class="incluso-icon">💬</div>
+        Grupo VIP exclusivo com a Tharcy e equipe
+      </div>
+      <div class="incluso-item">
+        <div class="incluso-icon">🛡️</div>
+        1 ano de suporte pós-curso — dúvidas, inseguranças, o que surgir
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTIMENTO -->
+  <div class="card">
+    <div class="section-label">Investimento</div>
+    <div class="pagamento-grid">
+
+      <div class="pagamento-item destaque">
+        <div class="pag-left">
+          <div class="pag-tag">Melhor opção</div>
+          <div class="pag-label">Pix à vista</div>
+          <div class="pag-desc">10% de desconto aplicado</div>
+        </div>
+        <div class="pag-valor">R$ 897</div>
+      </div>
+
+      <div class="pagamento-item">
+        <div class="pag-left">
+          <div class="pag-label">Cartão de crédito</div>
+          <div class="pag-desc">Parcelado — taxa da máquina por conta da aluna</div>
+        </div>
+        <div class="pag-valor">R$ 997</div>
+      </div>
+
+      <div class="pagamento-item">
+        <div class="pag-left">
+          <div class="pag-label">Parcelamento no Pix</div>
+          <div class="pag-desc">Entrada + parcelas combinadas. Curso inicia após quitação.</div>
+        </div>
+        <div class="pag-valor">R$ 997</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a class="cta-btn" href="https://wa.me/5566992227689" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Quero fazer o curso
+    </a>
+    <p class="cta-sub">Tire suas dúvidas antes de começar</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Tharcy Beauty</div>
+</footer>
+
+</body>
+</html>
