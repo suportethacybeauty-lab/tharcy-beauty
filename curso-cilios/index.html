@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso de Cílios VIP — Tharcy Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b0f;
+    --surface: #18141a;
+    --card: #1f1a22;
+    --border: rgba(255,255,255,0.07);
+    --rose: #d4a0b0;
+    --rose-light: #f0cdd8;
+    --rose-glow: rgba(212,160,176,0.12);
+    --gold: #c8a96e;
+    --gold-glow: rgba(200,169,110,0.1);
+    --white: #f5f0ee;
+    --muted: #8a8290;
+    --text: #d8d0cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% -10%, rgba(212,160,176,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 80% 90%, rgba(200,169,110,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse 30% 30% at 10% 60%, rgba(212,160,176,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 24px 60px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(212,160,176,0.25);
+    background: rgba(212,160,176,0.06);
+    color: var(--rose);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .brand-tag::before {
+    content: '✦';
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 10vw, 76px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 10px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rose-light);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 460px;
+    margin: 0 auto 40px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 300px;
+    margin: 0 auto 60px;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-diamond {
+    width: 6px; height: 6px;
+    background: var(--rose);
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+
+  /* BADGE ROW */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 64px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .badge-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .badge-item span { color: var(--rose); font-size: 13px; }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose-light); }
+
+  .section-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  /* DAYS TIMELINE */
+  .days {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .day-card:hover {
+    border-color: rgba(212,160,176,0.2);
+    transform: translateX(4px);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+  }
+
+  .day-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--rose-glow);
+    border: 1px solid rgba(212,160,176,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .day-num .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1;
+  }
+
+  .day-num .label {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  .day-info { flex: 1; }
+
+  .day-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .day-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .day-body {
+    padding: 0 28px 24px 100px;
+  }
+
+  .day-items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .day-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #a89fa5;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .day-item::before {
+    content: '—';
+    color: var(--rose);
+    opacity: 0.5;
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* BONUS GRID */
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .bonus-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 20px;
+    transition: border-color 0.3s;
+  }
+
+  .bonus-card:hover { border-color: rgba(200,169,110,0.25); }
+
+  .bonus-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .bonus-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  .bonus-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* INVESTMENT */
+  .invest-card {
+    background: var(--card);
+    border: 1px solid rgba(212,160,176,0.15);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .invest-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(212,160,176,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .invest-from {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .invest-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 12vw, 76px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .invest-value sup {
+    font-size: 0.4em;
+    vertical-align: super;
+    color: var(--rose-light);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+
+  .invest-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0;
+  }
+
+  .invest-opt {
+    background: rgba(212,160,176,0.08);
+    border: 1px solid rgba(212,160,176,0.18);
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--rose-light);
+    font-weight: 400;
+  }
+
+  .invest-note {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* THARCY BIO */
+  .bio-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .bio-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--rose-glow);
+    border: 1px solid rgba(212,160,176,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 28px;
+  }
+
+  .bio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .bio-role {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    opacity: 0.8;
+    margin-bottom: 14px;
+  }
+
+  .bio-text {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 20px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cta-title em { font-style: italic; color: var(--rose-light); }
+
+  .cta-sub {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #d4a0b0 0%, #b8849a 100%);
+    color: #1a0e14;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(212,160,176,0.25);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(212,160,176,0.35);
+  }
+
+  .cta-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 16px;
+    opacity: 0.7;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px 48px;
+    font-size: 11px;
+    color: var(--muted);
+    opacity: 0.5;
+    letter-spacing: 1px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 520px) {
+    .hero { padding: 60px 20px 40px; }
+    section { padding: 0 16px 48px; }
+    .day-body { padding: 0 20px 20px 20px; }
+    .bio-card { flex-direction: column; gap: 16px; }
+    .invest-card { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="brand-tag">Tharcy Beauty · Sinop/MT</div>
+  <h1>Curso de<br><em>Cílios</em></h1>
+  <p class="hero-sub">Formação VIP · Presencial · Individual</p>
+  <p class="hero-desc">Uma formação íntima, do zero ao profissional. Você aprende a trabalhar com autonomia, criar sua própria renda e atender com segurança desde o primeiro dia.</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="badges">
+    <div class="badge-item"><span>✦</span> 3 dias de imersão</div>
+    <div class="badge-item"><span>✦</span> VIP · só você</div>
+    <div class="badge-item"><span>✦</span> Modelo real inclusa</div>
+    <div class="badge-item"><span>✦</span> Kit de materiais</div>
+    <div class="badge-item"><span>✦</span> Certificado</div>
+  </div>
+</div>
+
+<!-- JORNADA -->
+<section>
+  <div class="reveal">
+    <p class="section-label">Sua Jornada</p>
+    <h2 class="section-title">3 dias que vão<br><em>mudar tudo</em></h2>
+    <p class="section-desc">Uma progressão pensada pra você sair pronta — não perdida. Cada dia tem um propósito.</p>
+  </div>
+
+  <div class="days">
+    <div class="day-card reveal">
+      <div class="day-header">
+        <div class="day-num">
+          <span class="num">01</span>
+          <span class="label">Dia</span>
+        </div>
+        <div class="day-info">
+          <div class="day-title">Base & Teoria</div>
+          <div class="day-sub">Construindo o seu alicerce</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="day-items">
+          <div class="day-item">Materiais, fios, curvaturas e espessuras — tudo que você precisa saber</div>
+          <div class="day-item">Como a cola funciona de verdade (e como evitar os erros mais comuns)</div>
+          <div class="day-item">Mapeamentos: gatinho, boneca, rabo de cavalo e muito mais</div>
+          <div class="day-item">Prática no manequim pra você pegar firmeza desde o início</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-header">
+        <div class="day-num">
+          <span class="num">02</span>
+          <span class="label">Dia</span>
+        </div>
+        <div class="day-info">
+          <div class="day-title">Primeira Modelo Real</div>
+          <div class="day-sub">Mão na massa com suporte ao vivo</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="day-items">
+          <div class="day-item">Você atende uma modelo real comigo do seu lado — corrigindo na hora</div>
+          <div class="day-item">Como tirar fotos bonitas do seu trabalho pro portfólio</div>
+          <div class="day-item">Como começar a atrair e conquistar suas primeiras clientes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-header">
+        <div class="day-num">
+          <span class="num">03</span>
+          <span class="label">Dia</span>
+        </div>
+        <div class="day-info">
+          <div class="day-title">Aperfeiçoamento no Studio</div>
+          <div class="day-sub">Sair com segurança de verdade</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="day-items">
+          <div class="day-item">Você me acompanha num atendimento real no studio</div>
+          <div class="day-item">Observa os detalhes que fazem a diferença entre um resultado comum e um resultado bonito</div>
+          <div class="day-item">Vai embora com autonomia, clareza e confiança pra atender</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section>
+  <div class="reveal">
+    <p class="section-label">Está incluído</p>
+    <h2 class="section-title">Tudo que você<br><em>precisa pra começar</em></h2>
+    <p class="section-desc">Nenhum custo extra escondido. Você já sai com tudo na mão.</p>
+  </div>
+
+  <div class="bonus-grid">
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">🎁</span>
+      <div class="bonus-title">Kit de Materiais</div>
+      <div class="bonus-desc">Você recebe os materiais pra já poder praticar e atender as primeiras clientes.</div>
+    </div>
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">📜</span>
+      <div class="bonus-title">Certificado</div>
+      <div class="bonus-desc">Comprova sua formação e agrega valor ao seu trabalho desde o início.</div>
+    </div>
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">🎬</span>
+      <div class="bonus-title">Código Wispy</div>
+      <div class="bonus-desc">Acesso ao curso online exclusivo como complemento da sua formação.</div>
+    </div>
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">💬</span>
+      <div class="bonus-title">1 Ano de Suporte VIP</div>
+      <div class="bonus-desc">Grupo exclusivo focado em você — dúvidas, evolução, captação de clientes, no seu ritmo.</div>
+    </div>
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">🔗</span>
+      <div class="bonus-title">Lista de Fornecedores</div>
+      <div class="bonus-desc">Onde comprar com qualidade e preço bom — sem precisar garimpar.</div>
+    </div>
+    <div class="bonus-card reveal">
+      <span class="bonus-icon">📱</span>
+      <div class="bonus-title">Como Captar Clientes</div>
+      <div class="bonus-desc">Direcionamento prático pra você começar a atender assim que terminar o curso.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section>
+  <div class="reveal">
+    <p class="section-label">Investimento</p>
+    <h2 class="section-title">Valor que se<br><em>paga rapidinho</em></h2>
+    <p class="section-desc">Com poucas clientes por semana, você já recupera tudo que investiu no primeiro mês.</p>
+  </div>
+
+  <div class="invest-card reveal">
+    <p class="invest-from">Investimento</p>
+    <div class="invest-value"><sup>R$</sup>1.497</div>
+    <div class="invest-options">
+      <span class="invest-opt">💚 PIX com 10% de desconto</span>
+      <span class="invest-opt">💳 Cartão de crédito · parcele como quiser (com taxa)</span>
+      <span class="invest-opt">📋 Parcelado no PIX sem juros</span>
+    </div>
+    <p class="invest-note">
+      <strong style="color: var(--rose-light); font-size: 13px;">Como funciona o parcelamento no PIX?</strong><br><br>
+      Você dá uma entrada, registramos tudo e combina o restante direto com a gente.<br>
+      O curso começa assim que o pagamento for finalizado. Sem juros, sem surpresa.
+    </p>
+  </div>
+</section>
+
+<!-- QUEM ENSINA -->
+<section>
+  <div class="reveal">
+    <p class="section-label">Quem vai te ensinar</p>
+    <h2 class="section-title">Começou com<br><em>16 anos</em></h2>
+    <p class="section-desc" style="margin-bottom: 24px;">Num quartinho pequeno em casa, sem ar condicionado. Hoje forma profissionais que trabalham com autonomia e renda própria.</p>
+  </div>
+  <div class="bio-card reveal">
+    <div class="bio-avatar">🌸</div>
+    <div>
+      <div class="bio-name">Tharcy</div>
+      <div class="bio-role">Especialista em Cílios · Sinop/MT</div>
+      <p class="bio-text">Começou aos 16 anos com sobrancelhas e foi crescendo com dedicação e amor pelo que faz. Hoje ensina não só a técnica — mas como trabalhar com autonomia, construir uma carteira de clientes e viver da sua arte. Cada aluna recebe atenção individual, porque o sucesso de você é o sucesso dela.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="reveal">
+    <h2 class="cta-title">Pronta pra<br><em>começar?</em></h2>
+    <p class="cta-sub">Atendimento individual · Sinop/MT</p>
+    <a href="https://wa.me/5566992227689" target="_blank" rel="noopener noreferrer" class="cta-btn">Falar diretamente com o Suporte ✦</a>
+    <p class="cta-note">Responde pelo WhatsApp</p>
+  </div>
+</div>
+
+<footer>
+  © Tharcy Beauty · Sinop, Mato Grosso
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
