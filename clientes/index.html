@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quebra de Objeções · Tharcy Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --border: #272727;
+    --lilac: #c8a8e9;
+    --lilac-glow: rgba(200, 168, 233, 0.15);
+    --lilac-deep: #a97dd1;
+    --pink: #ecdcff;
+    --white: #f3eeff;
+    --muted: #888;
+    --tag-bg: rgba(200, 168, 233, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BACKGROUND TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(200, 168, 233, 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 90% 80%, rgba(169, 125, 209, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    z-index: 1;
+    padding: 60px 24px 40px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid rgba(200, 168, 233, 0.3);
+    color: var(--lilac);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(32px, 7vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--lilac);
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto 40px;
+  }
+
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .rule-line { height: 1px; background: var(--border); flex: 1; max-width: 80px; }
+  .rule-dot { width: 5px; height: 5px; background: var(--lilac); border-radius: 50%; box-shadow: 0 0 8px rgba(200, 168, 233, 0.5); }
+
+  .how-to {
+    background: var(--card);
+    border: 1px solid rgba(200, 168, 233, 0.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: left;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .how-to p {
+    font-size: 11px;
+    color: var(--lilac);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .how-to ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .how-to li {
+    font-size: 13px;
+    color: #bbb;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .how-to li::before {
+    content: '✦';
+    color: var(--lilac);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* MAIN */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* BLOCO */
+  .bloco-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 0 10px;
+  }
+
+  .bloco-header h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--lilac);
+  }
+
+  .bloco-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200, 168, 233, 0.25), transparent);
+  }
+
+  .bloco-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .bloco-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding-left: 2px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .card:hover {
+    border-color: rgba(200, 168, 233, 0.3);
+    box-shadow: 0 4px 24px rgba(200, 168, 233, 0.05);
+  }
+
+  .card-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+  }
+
+  .card-trigger:hover .card-title { color: var(--white); }
+
+  .card-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--lilac-glow);
+    border: 1px solid rgba(200, 168, 233, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .card-meta { min-width: 0; }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ccc;
+    transition: color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-count {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  .card-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .card.open .card-arrow {
+    transform: rotate(180deg);
+    background: var(--lilac);
+    border-color: var(--lilac);
+    color: #1a0a2e;
+  }
+
+  /* CONTENT */
+  .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card.open .card-content { max-height: 9999px; }
+
+  .card-inner {
+    border-top: 1px solid rgba(200, 168, 233, 0.1);
+    padding: 0;
+  }
+
+  /* SCRIPT ITEM */
+  .script-item {
+    padding: 20px;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+    position: relative;
+  }
+
+  .script-item:last-child { border-bottom: none; }
+
+  .script-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .script-label .new-badge {
+    background: rgba(200, 168, 233, 0.12);
+    border: 1px solid rgba(200, 168, 233, 0.3);
+    color: var(--lilac);
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+  }
+
+  .script-bubble {
+    background: #111;
+    border: 1px solid #252525;
+    border-left: 2px solid rgba(200, 168, 233, 0.3);
+    border-radius: 4px 12px 12px 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #d8cce8;
+    white-space: pre-line;
+    position: relative;
+    font-weight: 400;
+  }
+
+  /* MULTI MSG */
+  .msg-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .msg-tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--lilac);
+    font-weight: 700;
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  /* COPY BUTTON */
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(200, 168, 233, 0.08);
+    border: 1px solid rgba(200, 168, 233, 0.15);
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .copy-btn:hover {
+    background: rgba(200, 168, 233, 0.18);
+    color: var(--lilac);
+    border-color: rgba(200, 168, 233, 0.4);
+  }
+
+  .copy-btn.copied {
+    background: rgba(200, 168, 233, 0.2);
+    color: var(--lilac);
+    border-color: var(--lilac);
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px 60px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .footer-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid rgba(200, 168, 233, 0.15);
+    padding: 12px 22px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .footer-tip span { color: var(--lilac); }
+
+  /* ANIMATE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card { animation: fadeUp 0.45s ease both; }
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.2s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+
+  @media (max-width: 480px) {
+    header { padding: 40px 20px 30px; }
+    main { padding: 10px 16px 60px; }
+    .card-trigger { padding: 16px; }
+    .script-item { padding: 16px; }
+    .copy-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Tharcy Beauty · Clientes</div>
+  <h1>Cílios<br><em>Clientes</em></h1>
+  <p class="subtitle">Scripts de atendimento e vendas para suas clientes de cílios.</p>
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+  <div class="how-to">
+    <p>Como usar</p>
+    <ul>
+      <li>Identifique a situação da conversa</li>
+      <li>Clique no bloco correspondente</li>
+      <li>Copie o script e adapte o NOME</li>
+      <li>A primeira mensagem é pra gerar resposta, não pra vender</li>
+    </ul>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="footer-tip">
+    <span>💡</span> A venda acontece na conversa, não no script.
+  </div>
+</footer>
+
+<script>
+const data = [
+  {
+    bloco: "01",
+    titulo: "Resgate — Clientes",
+    descricao: "Para clientes que sumiram ou pararam de responder. Objetivo: abrir a conversa de volta, não vender.",
+    cards: [
+      {
+        icon: "💬",
+        titulo: "Parou de responder",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Direta",
+            texto: "Oi NOME! Sumiu de mim hein 😄 Tava aqui com uma vaga na agenda e lembrei de você. Ainda quer marcar?"
+          },
+          {
+            label: "Versão 02 — Sem pressão",
+            texto: "NOME, tudo bem? Faz um tempo que a gente não fala. Ainda está querendo fazer os cílios? Me conta."
+          },
+          {
+            label: "Versão 03 — Investigativa",
+            texto: "Oi NOME! Lembrei de você hoje. A gente ficou de marcar e não deu certo da última vez — o que travou?"
+          },
+          {
+            label: "Versão 04 — Vaga exclusiva",
+            texto: "Oi NOME! Tava organizando minha agenda e seu nome apareceu aqui. Tenho uma janela essa semana e pensei em você antes de abrir pra todo mundo. Ainda quer vir?"
+          },
+          {
+            label: "Versão 05 — Porta aberta",
+            texto: "NOME, só passando pra dizer que a agenda continua aberta pra você. Quando quiser retomar, é só me chamar. Sem pressão."
+          },
+          {
+            label: "Versão 06 — Curiosidade",
+            texto: "Oi NOME! Você sumiu e fiquei curiosa — aconteceu algo ou foi mesmo a correria? Me conta como você tá."
+          }
+        ]
+      },
+      {
+        icon: "💸",
+        titulo: "Estava sem dinheiro",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Verificação",
+            texto: "Oi NOME! Você passou pela minha cabeça hoje. Sei que da última vez o financeiro apertou — ainda quer fazer? Posso ver uma forma de encaixar no seu bolso."
+          },
+          {
+            label: "Versão 02 — Condição especial",
+            texto: "NOME, ainda está querendo fazer os cílios? Tenho uma condição especial essa semana e pensei em você antes de divulgar."
+          },
+          {
+            label: "Versão 03 — Retomada",
+            texto: "Oi NOME! Lembrei de você. Da última vez a gente não conseguiu fechar por causa do valor — me conta se ainda faz sentido, quero ver o que consigo fazer."
+          },
+          {
+            label: "Versão 04 — Sem julgamento",
+            texto: "NOME, tudo bem? A gente conversou e não deu certo antes. Só queria saber — ainda quer fazer? Se o financeiro ainda aperta, me fala que a gente pensa juntas."
+          },
+          {
+            label: "Versão 05 — Empatia",
+            texto: "Oi NOME! Não esqueci de você não. Na época o dinheiro apertou — acontece com a gente. Se ainda tiver interesse, me chama que posso te ajudar de um jeito que não pesa."
+          },
+          {
+            label: "Versão 06 — Investigativa",
+            texto: "NOME, me diz uma coisa com sinceridade — ainda quer fazer os cílios? Pergunto porque não quero que o valor seja o único motivo de você ficar sem se cuidar."
+          }
+        ]
+      },
+      {
+        icon: "👻",
+        titulo: "Parou de vir do nada",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Cuidado genuíno",
+            texto: "Oi NOME! Faz um tempo que você não aparece por aqui. Tá tudo bem? Senti sua falta de verdade."
+          },
+          {
+            label: "Versão 02 — Investigativa",
+            texto: "NOME, tudo bem com você? Notei que faz um tempo que a gente não se fala e fiquei preocupada. Aconteceu algo?"
+          },
+          {
+            label: "Versão 03 — Direta",
+            texto: "Oi NOME! Não sei se foi a correria ou se aconteceu algo — mas queria te dar um alô. Me conta como você tá."
+          },
+          {
+            label: "Versão 04 — Afeto",
+            texto: "NOME! Quanto tempo. Você era uma das minhas favoritas de atender — preciso que você volte 😄 O que aconteceu?"
+          },
+          {
+            label: "Versão 05 — Sem cobrança",
+            texto: "Oi NOME! Passando só pra saber se tá tudo bem mesmo. Não é cobrança — é que eu gosto de saber como minhas clientes estão, não só quando precisam marcar."
+          },
+          {
+            label: "Versão 06 — Abertura",
+            texto: "NOME, se por acaso você foi fazer em outro lugar e não ficou satisfeita, pode me contar — sem julgamento. Só quero entender como te ajudar de volta."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    bloco: "02",
+    titulo: "Só perguntaram o preço e sumiram",
+    descricao: "Ela perguntou o valor e desapareceu. Objetivo: entender o que travou, sem pressão.",
+    cards: [
+      {
+        icon: "💰",
+        titulo: "Clientes — serviço de cílios",
+        count: 7,
+        scripts: [
+          {
+            label: "Versão 01 — Direta",
+            texto: "Oi NOME! Você perguntou sobre o valor e depois sumiu — acontece! Só queria saber se o preço foi o problema ou se foi outra coisa. Me conta."
+          },
+          {
+            label: "Versão 02 — Investigativa",
+            texto: "NOME, tudo bem? Vi que a gente conversou e não fechou. O valor travou ou aconteceu outra coisa?"
+          },
+          {
+            label: "Versão 03 — Solução",
+            texto: "Oi NOME! Ainda está pensando em fazer os cílios? Se o preço foi o que pesou, me fala — posso ver o que consigo fazer."
+          },
+          {
+            label: "Versão 04 — Sem julgamento",
+            texto: "NOME! Você perguntou o valor e sumiu 😄 Sem julgamento, isso acontece muito. Me conta o que travou — talvez eu consiga resolver."
+          },
+          {
+            label: "Versão 05 — Interesse genuíno",
+            texto: "Oi NOME! Só queria saber se você ainda tem interesse ou se mudou de ideia. Pode falar com sinceridade, não tem problema."
+          },
+          {
+            label: "Versão 06 — Reframing",
+            texto: "NOME, me diz uma coisa — quando você viu o valor, achou caro demais ou ficou com dúvida se valia? Pergunto porque são situações bem diferentes e quero entender onde você está."
+          },
+          {
+            label: "Versão 07 — Contexto de valor",
+            texto: "Oi NOME! Uma pergunta rápida — você chegou a ver meu portfólio antes de me perguntar o valor? Pergunto porque às vezes o preço faz muito mais sentido depois de ver o resultado. Posso te mandar?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    bloco: "03",
+    titulo: "Quebra de Objeção — Clientes",
+    descricao: "Cada objeção esconde uma dúvida real. Antes de responder, pergunte. Antes de convencer, entenda.",
+    cards: [
+      {
+        icon: "⏰",
+        titulo: "Não tem tempo",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Solução prática",
+            texto: "NOME, sem problema. Me diz só uma coisa — qual dia e horário seria mais fácil pra você? Tenho uns horários alternativos que a maioria não sabe, quero ver se encaixa."
+          },
+          {
+            label: "Versão 02 — Horários alternativos",
+            texto: "Entendo NOME! Atendo depois das 18h e sábado também. Me fala o que funciona melhor pra você."
+          },
+          {
+            label: "Versão 03 — Flexibilidade",
+            texto: "NOME, a correria é real mesmo. Me conta — se tivesse um horário que não atrapalhasse sua rotina, qual seria? Vou tentar me encaixar."
+          },
+          {
+            label: "Versão 04 — Investigativa",
+            texto: "NOME, entendo demais. Me diz uma coisa — qual é o dia da semana que você tem mais fôlego? Mesmo que seja pouco tempo, a gente dá um jeito."
+          },
+          {
+            label: "Versão 05 — Prova social",
+            texto: "NOME, a maioria das minhas clientes também tem agenda corrida. A gente sempre dá um jeito — algumas vendem de madrugada, outras no almoço. Me conta como é o seu dia e a gente acha a janela."
+          },
+          {
+            label: "Versão 06 — Reframing",
+            texto: "NOME, pensa assim — são só X horas e você fica X semanas com os cílios prontos sem precisar se maquiar todo dia. No final, te poupa mais tempo do que gasta. Faz sentido?"
+          }
+        ]
+      },
+      {
+        icon: "💰",
+        titulo: "Não tem dinheiro",
+        count: 7,
+        scripts: [
+          {
+            label: "Versão 01 — Parcelamento",
+            texto: "NOME, sem estresse. Se o que está travando é só o financeiro, me fala — consigo parcelar no cartão e quero ver se te ajuda."
+          },
+          {
+            label: "Versão 02 — Desconto especial",
+            texto: "Entendo você NOME. Me diz uma coisa — se eu conseguir um desconto especial essa semana, resolve?"
+          },
+          {
+            label: "Versão 03 — Empatia",
+            texto: "NOME, já estive nessa situação também. Me conta quanto você consegue agora e eu vejo o que dá pra fazer."
+          },
+          {
+            label: "Versão 04 — Comprometimento",
+            texto: "NOME, obrigada por falar com sinceridade. Me conta uma coisa — se o valor não fosse problema, você faria? Pergunto porque quero entender se é só isso que está travando."
+          },
+          {
+            label: "Versão 05 — Investigativa",
+            texto: "NOME, entendo. Mas me diz — é falta de dinheiro mesmo ou tem outra coisa pesando? Às vezes o que parece financeiro é outra dúvida por baixo."
+          },
+          {
+            label: "Versão 06 — Técnica acessível",
+            texto: "NOME, posso te apresentar uma opção mais em conta que eu faço? Tem técnicas diferentes com resultados lindos e preços menores. Quer que eu te mostre?"
+          },
+          {
+            label: "Versão 07 — Custo diário",
+            texto: "NOME, me deixa te mostrar uma conta rápida. O procedimento dura X semanas. Dividindo o valor por X dias, dá menos de X por dia pra você acordar com o olhar pronto todo dia. Faz sentido assim?"
+          }
+        ]
+      },
+      {
+        icon: "🤔",
+        titulo: "Disse que vai pensar",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Objeção oculta",
+            texto: "Claro NOME, sem pressa. Só me conta — tem alguma dúvida que ficou? Às vezes o que parece reflexão é na verdade uma pergunta que não foi respondida."
+          },
+          {
+            label: "Versão 02 — Sinceridade",
+            texto: "NOME, tudo bem pensar! Mas me diz com sinceridade — o que ainda tá pesando na decisão? Quero entender."
+          },
+          {
+            label: "Versão 03 — Porta aberta",
+            texto: "Sem problema NOME. Fica à vontade. Se surgir qualquer dúvida pode me chamar, tô aqui."
+          },
+          {
+            label: "Versão 04 — O que falta",
+            texto: "NOME, pode pensar sim. Mas antes de ir, me conta — o que falta pra você se sentir segura em marcar? Quero ver se consigo te ajudar a chegar nessa resposta."
+          },
+          {
+            label: "Versão 05 — Prazo",
+            texto: "Claro NOME, sem pressão. Só me fala uma coisa — você tem uma ideia de quando vai conseguir ter essa resposta? Pergunto porque quero saber se consigo segurar sua vaga até lá."
+          },
+          {
+            label: "Versão 06 — Vaga",
+            texto: "NOME, pode pensar sim. Só te aviso que tenho poucos horários essa semana. Se quiser garantir o seu antes de acabar, me fala — senão te aviso quando abrir mais vaga."
+          }
+        ]
+      },
+      {
+        icon: "💲",
+        titulo: "Achou mais barato em outro lugar",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Saúde ocular",
+            texto: "NOME, entendo! Preço importa sim. Mas me conta — você já viu o trabalho dessa pessoa? Portfolio, resultados? Cílios mal aplicados podem machucar os olhos e aí o prejuízo é bem maior que qualquer desconto."
+          },
+          {
+            label: "Versão 02 — Segurança",
+            texto: "Faz sentido pesquisar NOME. Só te peço uma coisa — antes de decidir, dá uma olhada no meu trabalho com calma. Se mesmo assim preferir outra, tudo bem. Mas quero que você escolha com segurança."
+          },
+          {
+            label: "Versão 03 — Transparência",
+            texto: "NOME, pode me perguntar o que quiser sobre meu trabalho — materiais que uso, cuidados, resultados. Quero que você tome a melhor decisão pra você."
+          },
+          {
+            label: "Versão 04 — Material",
+            texto: "Entendo NOME! Me conta — você sabe que material essa outra profissional usa? Pergunto porque a diferença de preço quase sempre está no material, e material barato nos olhos pode causar alergia e irritação."
+          },
+          {
+            label: "Versão 05 — Portfólio",
+            texto: "NOME, posso te mandar meu portfólio pra você comparar com o trabalho dela? Quero que a sua escolha seja baseada no resultado, não só no preço."
+          },
+          {
+            label: "Versão 06 — Diferencial honesto",
+            texto: "NOME, não vou falar mal de ninguém. Só te conto o que eu entrego — [DESCREVER DIFERENCIAL: material, durabilidade, cuidado pós]. Se isso fizer sentido pra você, ótimo. Se não, sem problema."
+          }
+        ]
+      },
+      {
+        icon: "📅",
+        titulo: "Sumiu depois de reservar a vaga",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Confirmação",
+            texto: "Oi NOME! Reservei seu horário aqui mas não tive mais retorno. Ainda vai conseguir vir? Preciso confirmar pra não perder sua vaga."
+          },
+          {
+            label: "Versão 02 — Sem julgamento",
+            texto: "NOME, tudo bem? Tô com sua vaga guardada aqui. Me confirma se ainda vai vir ou se prefere remarcar — sem julgamento."
+          },
+          {
+            label: "Versão 03 — Prazo",
+            texto: "Oi NOME! Só pra confirmar — você ainda vai vir no dia que a gente combinou? Se precisar mudar, me fala antes que eu consigo remarcar sem problema."
+          },
+          {
+            label: "Versão 04 — Vaga em risco",
+            texto: "NOME, tô com sua vaga reservada mas já recebi mais uma solicitação pro mesmo horário. Você ainda vai conseguir vir? Me fala rapidinho pra eu saber o que fazer."
+          },
+          {
+            label: "Versão 05 — Empática",
+            texto: "Oi NOME! Tudo bem com você? Ficou quieta e fiquei preocupada. Me conta — vai conseguir vir ou aconteceu algo?"
+          },
+          {
+            label: "Versão 06 — Remarcação fácil",
+            texto: "NOME, se por acaso não vai conseguir vir mais, pode me falar com tranquilidade — a gente remarca pra outro dia sem problema. Só preciso saber pra liberar o horário."
+          }
+        ]
+      },
+      {
+        icon: "📸",
+        titulo: "Quer ver o trabalho antes de decidir",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Estilo",
+            texto: "Claro NOME! Vou te mandar alguns resultados. Me conta — você prefere algo mais natural ou com mais volume?"
+          },
+          {
+            label: "Versão 02 — Personalizado",
+            texto: "NOME, com prazer! Me diz como você gosta — discreto, volumoso, comprido? Assim já te mando os que mais combinam com o que você quer."
+          },
+          {
+            label: "Versão 03 — Opção de estilo",
+            texto: "Claro NOME! Você prefere ver fotos do dia a dia ou de um resultado mais especial? Mando os dois se quiser 😄"
+          },
+          {
+            label: "Versão 04 — Formato do olho",
+            texto: "NOME, me conta uma coisa — como é o seu olho? Amendoado, redondo, com canto caído? Assim consigo te mostrar exatamente como ficaria em você, não só foto genérica."
+          },
+          {
+            label: "Versão 05 — Resultado real",
+            texto: "NOME, posso te mandar fotos de clientes com um tipo de olho parecido com o seu. Fica muito mais fácil de visualizar o resultado assim. Me conta como é o seu olho."
+          },
+          {
+            label: "Versão 06 — Depoimento",
+            texto: "NOME, além das fotos posso te mandar o que algumas clientes falam sobre o resultado. Às vezes a experiência de quem já fez diz mais do que qualquer foto. Quer?"
+          }
+        ]
+      },
+      {
+        icon: "🔁",
+        titulo: "Já fez com outra profissional e quer trocar",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Escuta ativa",
+            texto: "Que bom que chegou até mim NOME. Me conta como foi a experiência anterior — o que você gostou e o que não gostou. Assim já sei exatamente o que fazer diferente."
+          },
+          {
+            label: "Versão 02 — Entender o problema",
+            texto: "NOME, fico feliz que está buscando uma nova opção. Me conta o que te incomodou antes — quero entender pra garantir que aqui vai ser diferente."
+          },
+          {
+            label: "Versão 03 — Detalhe completo",
+            texto: "NOME, me conta tudo — o que você não gostou, o que você esperava e não teve. Quanto mais eu souber, melhor posso te atender."
+          },
+          {
+            label: "Versão 04 — Empatia + solução",
+            texto: "NOME, que chato passar por uma experiência ruim. Me conta o que aconteceu — dependendo do que for, posso te explicar como trabalho diferente e você decide se faz sentido."
+          },
+          {
+            label: "Versão 05 — Confiança",
+            texto: "NOME, entendo a desconfiança depois de uma experiência ruim. Me deixa te mostrar como funciona meu trabalho antes de você decidir. Sem compromisso — só quero que você se sinta segura."
+          },
+          {
+            label: "Versão 06 — Resultado anterior",
+            texto: "NOME, me conta — o que especificamente não ficou do jeito que você queria? Durabilidade, formato, conforto? Quero entender pra te garantir que aqui vai ser diferente."
+          }
+        ]
+      },
+      {
+        icon: "😤",
+        titulo: "Reclamou do resultado",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Acolhimento",
+            texto: "NOME, muito obrigada por me contar. Fico triste que não ficou do jeito que você esperava. Me conta com detalhes o que te incomodou — quero entender e resolver."
+          },
+          {
+            label: "Versão 02 — Solução imediata",
+            texto: "NOME, entendo você. Isso não é o que eu quero pra nenhuma cliente minha. Me diz o que aconteceu e a gente vê o que posso fazer pra corrigir."
+          },
+          {
+            label: "Versão 03 — Responsabilidade",
+            texto: "NOME, sinto muito pelo incômodo. Você merecia um resultado diferente. Me conta o que ficou errado — quero ter a chance de corrigir isso pra você."
+          },
+          {
+            label: "Versão 04 — Retorno",
+            texto: "NOME, pode voltar aqui. Olho junto com você o que aconteceu e a gente resolve. Não quero que você saia insatisfeita do meu trabalho."
+          },
+          {
+            label: "Versão 05 — Investigativa",
+            texto: "NOME, me conta — foi durabilidade, formato, conforto ou outra coisa? Quero entender exatamente o que deu errado pra saber como te ajudar."
+          },
+          {
+            label: "Versão 06 — Manutenção da relação",
+            texto: "NOME, fico feliz que me falou em vez de só ir embora. Isso significa que você ainda dá uma chance pra eu resolver. Me conta tudo — tô aqui pra ouvir e agir."
+          }
+        ]
+      },
+      {
+        icon: "🔄",
+        titulo: "Quer cancelar ou remarcar",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Remarcação fácil",
+            texto: "Oi NOME! Sem problema remarcar. Me diz qual data fica melhor pra você — quero garantir que você não perca o horário."
+          },
+          {
+            label: "Versão 02 — Entender o motivo",
+            texto: "NOME, tudo bem! Me conta o que aconteceu — foi imprevistos mesmo ou tem algo que posso ajudar a resolver?"
+          },
+          {
+            label: "Versão 03 — Cancelamento com abertura",
+            texto: "NOME, tudo certo. Fica à vontade. Só me conta — prefere já remarcar pra garantir um horário bom, ou me chama depois quando estiver mais livre?"
+          },
+          {
+            label: "Versão 04 — Valor da vaga",
+            texto: "Oi NOME! Entendo. Só te aviso que essa semana tô bem cheia — se puder já escolher uma nova data, a gente garante seu horário antes de esgotar. O que acha?"
+          },
+          {
+            label: "Versão 05 — Empatia",
+            texto: "NOME, tudo bem mesmo. A vida prega essas peças. Me fala quando estiver mais tranquila e a gente encaixa você de volta."
+          },
+          {
+            label: "Versão 06 — Retorno garantido",
+            texto: "NOME, sem problema. Só me fala uma coisa — você quer já deixar uma nova data marcada ou prefere me chamar depois? Quero garantir que você não fique sem o horário quando quiser voltar."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    bloco: "04",
+    titulo: "Como Passar o Preço — Clientes",
+    descricao: "Simples, direto e humano. Sem pitch de vendas — só uma profissional falando o valor com confiança.",
+    cards: [
+      {
+        icon: "🔔",
+        titulo: "No início da conversa",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Técnica antes do valor",
+            texto: "NOME, o valor depende da técnica! Me conta — você prefere algo mais natural ou quer mais volume? Assim já te passo o valor certinho."
+          },
+          {
+            label: "Versão 02 — Valor direto",
+            texto: "Oi NOME! A técnica X fica em R$X. Você já fez cílios antes ou seria a primeira vez?"
+          },
+          {
+            label: "Versão 03 — Apresentação das opções",
+            texto: "NOME, tenho algumas opções! A mais procurada aqui é a [TÉCNICA] por R$X, mas depende muito do que você quer. Me conta o que está buscando."
+          },
+          {
+            label: "Versão 04 — Evento ou dia a dia",
+            texto: "NOME, é pra usar no dia a dia ou tem um evento especial? Pergunto porque o resultado e o valor mudam — quero te indicar o que fica melhor pra você."
+          },
+          {
+            label: "Versão 05 — Alergias",
+            texto: "Oi NOME! Antes de te passar o valor, me conta — você tem alguma sensibilidade nos olhos? Isso pode mudar a técnica que vou te indicar."
+          },
+          {
+            label: "Versão 06 — Confiante e direto",
+            texto: "NOME, o valor da [TÉCNICA] é R$X, à vista ou parcelado no cartão. Me conta — você prefere natural ou volumoso?"
+          }
+        ]
+      },
+      {
+        icon: "⚡",
+        titulo: "No meio da conversa",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Natural",
+            texto: "NOME, então fica em R$X. Parcelando no cartão consigo dividir em até Xx. O que fica melhor pra você?"
+          },
+          {
+            label: "Versão 02 — Com diferencial",
+            texto: "O valor é R$X, NOME. [DESCREVER UM DIFERENCIAL RÁPIDO — ex: material importado, dura até X semanas]. Quer agendar?"
+          },
+          {
+            label: "Versão 03 — Confirmação antes do valor",
+            texto: "NOME, antes de te falar o valor — você gostou da técnica que te mostrei? Quero ter certeza que é isso mesmo antes de passar o preço."
+          },
+          {
+            label: "Versão 04 — Direto ao fechamento",
+            texto: "NOME, tudo certo por aqui! O valor é R$X. Você prefere agendar essa semana ou na próxima?"
+          },
+          {
+            label: "Versão 05 — Duração do resultado",
+            texto: "NOME, o valor é R$X e o resultado dura em torno de X semanas. Parcelando no cartão fica em Xx. Faz sentido pra você?"
+          },
+          {
+            label: "Versão 06 — Leve e descomplicado",
+            texto: "Então NOME, ficou tudo claro sobre a técnica? O valor é R$X. Me fala quando você quer vir que eu já olho minha agenda!"
+          }
+        ]
+      },
+      {
+        icon: "🏁",
+        titulo: "No final da conversa",
+        count: 6,
+        scripts: [
+          {
+            label: "Versão 01 — Fechamento natural",
+            texto: "NOME, o valor é R$X, à vista ou parcelado no cartão em até Xx. Qual data fica bom pra você?"
+          },
+          {
+            label: "Versão 02 — Agenda aberta",
+            texto: "Ótimo NOME! Fico feliz que fez sentido. O valor é R$X. Tenho horário [DIA/HORA] disponível — funciona pra você?"
+          },
+          {
+            label: "Versão 03 — Vaga disponível",
+            texto: "NOME, tenho uma vaga [DIA] que tá perfeita pra você. O valor é R$X. Vou guardar seu nome aqui — fecha?"
+          },
+          {
+            label: "Versão 04 — Sem enrolação",
+            texto: "NOME, valor é R$X. Parcelando no cartão fica Xx. Me fala o dia que funciona melhor e a gente marca."
+          },
+          {
+            label: "Versão 05 — Com carinho",
+            texto: "NOME, adorei conversar com você! O valor é R$X e consigo te encaixar [DIA/HORA]. Que tal a gente fechar?"
+          },
+          {
+            label: "Versão 06 — Confiante",
+            texto: "Então NOME, tá tudo certo. R$X, parcelamos no cartão se precisar. Qual o melhor dia pra você vir?"
+          }
+        ]
+      }
+    ]
+  }
+];
+
+
+function escapeHtml(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ copiado';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'copiar';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function renderScript(script, idx) {
+  if (script.sequencia) {
+    const allText = script.msgs.map(m => m.texto).join('\n\n---\n\n');
+    return `
+      <div class="script-item">
+        <div class="script-label">${script.label}${script.novo ? '<span class="new-badge">novo</span>' : ''}</div>
+        <div class="msg-sequence">
+          ${script.msgs.map(m => `
+            <div>
+              <div class="msg-tag">${m.tag}</div>
+              <div class="script-bubble" style="position:relative">
+                <button class="copy-btn" onclick="copyText(${JSON.stringify(m.texto)}, this)">copiar</button>
+                ${escapeHtml(m.texto)}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+  return `
+    <div class="script-item">
+      <div class="script-label">${script.label}${script.novo ? '<span class="new-badge">novo</span>' : ''}</div>
+      <div class="script-bubble">
+        <button class="copy-btn" onclick="copyText(${JSON.stringify(script.texto)}, this)">copiar</button>
+        ${escapeHtml(script.texto)}
+      </div>
+    </div>
+  `;
+}
+
+function renderCard(card, cardIdx) {
+  const id = `card-${cardIdx}`;
+  return `
+    <div class="card" id="${id}">
+      <div class="card-trigger" onclick="toggleCard('${id}')">
+        <div class="card-left">
+          <div class="card-icon">${card.icon}</div>
+          <div class="card-meta">
+            <div class="card-title">${card.titulo}</div>
+            <div class="card-count">${card.count} script${card.count > 1 ? 's' : ''}</div>
+          </div>
+        </div>
+        <div class="card-arrow">▾</div>
+      </div>
+      <div class="card-content">
+        <div class="card-inner">
+          ${card.scripts.map((s, i) => renderScript(s, i)).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderBloco(bloco, blocoIdx) {
+  let html = `
+    <div class="bloco-header">
+      <span class="bloco-num">Bloco ${bloco.bloco}</span>
+      <div class="bloco-line"></div>
+      <h2>${bloco.titulo}</h2>
+    </div>
+    <p class="bloco-desc">${bloco.descricao}</p>
+  `;
+  bloco.cards.forEach((card, i) => {
+    html += renderCard(card, `${blocoIdx}-${i}`);
+  });
+  return html;
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+const app = document.getElementById('app');
+data.forEach((bloco, i) => {
+  app.innerHTML += renderBloco(bloco, i);
+});
+</script>
+</body>
+</html>
