@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Tráfego Pago — Tharcy Beauty</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --black:  #0a0a0a;
+    --dark:   #111111;
+    --card:   #181818;
+    --card2:  #1e1e1e;
+    --gold:   #c9a84c;
+    --gold2:  #e2c47a;
+    --pink:   #d4788a;
+    --pink2:  #e89aaa;
+    --white:  #f5f0ea;
+    --muted:  rgba(245,240,234,0.55);
+    --border: rgba(201,168,76,0.18);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .cover {
+    background: var(--black);
+    text-align: center;
+    padding: 70px 30px 60px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,120,138,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .brand-tag {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cover h1 em { font-style: italic; color: var(--pink2); }
+
+  .cover .sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    margin-top: 16px;
+  }
+
+  .gold-rule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin: 22px 0;
+  }
+  .gold-rule span { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .gold-rule i { color: var(--gold); font-style: normal; font-size: 10px; }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 50px 24px 60px;
+  }
+
+  .intro-box {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin-bottom: 48px;
+    background: var(--card);
+  }
+  .intro-box p { font-size: 14px; color: var(--muted); font-style: italic; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .step-block { margin-bottom: 40px; }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .step-num {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+
+  .card p { color: rgba(245,240,234,0.8); font-size: 14.5px; margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .action {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14.5px;
+    color: rgba(245,240,234,0.8);
+  }
+  .action .ic { font-size: 16px; min-width: 22px; margin-top: 2px; }
+  .action strong { color: var(--white); }
+  .action:last-child { margin-bottom: 0; }
+
+  .callout-gold {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: var(--gold2);
+  }
+  .callout-gold strong { color: var(--gold); }
+
+  .callout-pink {
+    background: rgba(212,120,138,0.08);
+    border: 1px solid rgba(212,120,138,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: var(--pink2);
+  }
+  .callout-pink strong { color: var(--pink); }
+
+  .callout-warn {
+    background: rgba(180,80,80,0.08);
+    border: 1px solid rgba(180,80,80,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: #e88a8a;
+    line-height: 1.8;
+  }
+
+  .config-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 13.5px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .config-table th {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    padding: 11px 16px;
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .config-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(245,240,234,0.8);
+    vertical-align: top;
+  }
+  .config-table tr:last-child td { border-bottom: none; }
+  .config-table td:first-child { color: var(--muted); width: 38%; }
+
+  .ad-example {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--pink);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: rgba(245,240,234,0.85);
+    font-style: italic;
+    line-height: 1.75;
+  }
+  .ad-example .ad-label {
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .diagnose-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .diagnose-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .diagnose-block p { font-size: 14px; color: var(--muted); }
+  .diagnose-block strong { color: var(--gold2); }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+    margin: 44px 0;
+  }
+
+  .tip-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14.5px;
+    color: rgba(245,240,234,0.8);
+    align-items: flex-start;
+  }
+  .tip-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="brand-tag">✦ Tharcy Beauty ✦</div>
+  <h1>Tráfego Pago<br><em>Pelo Celular</em></h1>
+  <div class="gold-rule">
+    <span></span><i>✦</i><span></span>
+  </div>
+  <p class="sub">Guia completo para lash designers iniciantes</p>
+</div>
+
+<div class="container">
+
+  <div class="intro-box">
+    <p>📱 Este guia foi feito para quem nunca mexeu no Facebook Ads. Aqui você vai aprender a criar seu primeiro anúncio usando só o celular — do jeito mais simples e direto possível, sem enrolação.</p>
+  </div>
+
+  <!-- 1 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">O que é tráfego pago? (A ideia simples)</div>
+    </div>
+    <div class="card">
+      <p>Imagina que você colou um panfleto no mural do mercado — só quem passa ali vê. O tráfego pago é como contratar alguém para distribuir esse panfleto para as pessoas certas, na cidade certa, na hora certa.</p>
+      <p>Você define um valor por dia (pode começar com R$10) e o Facebook mostra seu anúncio para mulheres da sua cidade que já se interessam por beleza.</p>
+      <div class="callout-gold">
+        <strong>Resumindo:</strong> você paga para aparecer para quem ainda não te conhece. É o jeito mais rápido de trazer clientes novas — mas só funciona se a base estiver pronta.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">Antes de criar o anúncio — o que você precisa ter</div>
+    </div>
+    <div class="card">
+      <div class="action"><span class="ic">📸</span><span><strong>1 foto ou vídeo de antes e depois</strong> — fundo limpo, boa iluminação. Esse será seu anúncio. Vídeos curtos (até 15 segundos) costumam ter desempenho ainda melhor que fotos.</span></div>
+      <div class="action"><span class="ic">📘</span><span><strong>Uma página no Facebook</strong> — não pode ser perfil pessoal. Precisa ser uma Página Comercial. Se não tiver, crie antes de continuar.</span></div>
+      <div class="action"><span class="ic">📷</span><span><strong>Instagram conectado à página do Facebook</strong> — assim o anúncio aparece nos dois ao mesmo tempo.</span></div>
+      <div class="action"><span class="ic">💳</span><span><strong>Um cartão de crédito ou débito</strong> — você só é cobrada conforme o anúncio roda.</span></div>
+      <div class="callout-warn">
+        ⚠️ <strong>Sem portfólio, não adianta anunciar.</strong> Antes de qualquer coisa, faça atendimentos modelo, fotografe os resultados e só depois invista em anúncio. Foto fraca = dinheiro jogado fora.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">Impulsionar pelo Instagram ou usar o Gerenciador?</div>
+    </div>
+    <div class="card">
+      <p>Muitas alunas ficam em dúvida aqui — e essa escolha faz toda a diferença.</p>
+      <div class="action" style="margin-top:6px;"><span class="ic">❌</span><span><strong>Impulsionar pelo Instagram</strong> — é aquele botão azul "Impulsionar publicação". É fácil, mas te dá pouquíssimo controle. Não recomendo para quem quer resultado real.</span></div>
+      <div class="action"><span class="ic">✅</span><span><strong>Gerenciador de Anúncios (Meta Ads Manager)</strong> — é o jeito certo. Você controla tudo: público, orçamento, onde aparece, botão de ação. É o que vamos usar.</span></div>
+      <div class="callout-gold">
+        💡 Baixe o app <strong>"Gerenciador de Anúncios"</strong> na loja do seu celular (ícone azul escuro da Meta). Entre com o mesmo e-mail e senha do Facebook.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-title">Criando sua campanha no app</div>
+    </div>
+    <div class="card">
+      <p>Dentro do app, toque em <strong>"+"</strong> ou <strong>"Criar campanha"</strong> para começar.</p>
+
+      <p style="margin-top:14px; color:var(--white); font-weight:500;">👉 Objetivo da campanha:</p>
+      <div class="action">
+        <span class="ic">✅</span>
+        <span>Selecione <strong>"Mensagens"</strong> — esse objetivo faz o Facebook encontrar pessoas com maior chance de te mandar mensagem no WhatsApp. É melhor do que "Tráfego" para o nosso caso.</span>
+      </div>
+
+      <p style="margin-top:14px; color:var(--white); font-weight:500;">👉 Nome da campanha:</p>
+      <div class="action"><span class="ic">✍️</span><span>Exemplo: <strong>CP cílios fio a fio</strong> — coloque um nome que você entenda depois</span></div>
+
+      <p style="margin-top:14px; color:var(--white); font-weight:500;">👉 Orçamento — use orçamento DIÁRIO:</p>
+      <div class="action"><span class="ic">💰</span><span>Comece com <strong>R$10 a R$15 por dia</strong>. O Meta aprende melhor com orçamento diário. Com R$10/dia por 7 dias você já tem um teste real e pode avaliar o resultado.</span></div>
+
+      <div class="callout-pink">
+        💡 <strong>Não mexa na campanha nos primeiros 3 dias.</strong> O algoritmo precisa de tempo para aprender quem é o seu público. Quem fica trocando tudo no dia 1 nunca descobre o que funciona.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div class="step-title">Configurando o público (quem vai ver)</div>
+    </div>
+    <div class="card">
+      <p>Essa parte define se o anúncio vai chegar para as pessoas certas. Configure assim:</p>
+      <table class="config-table">
+        <tr>
+          <th>Configuração</th>
+          <th>O que colocar</th>
+        </tr>
+        <tr>
+          <td>📍 Localização</td>
+          <td>Sua cidade + "pessoas que moram ou estiveram recentemente"</td>
+        </tr>
+        <tr>
+          <td>👩 Gênero</td>
+          <td>Apenas mulheres</td>
+        </tr>
+        <tr>
+          <td>🎂 Idade</td>
+          <td>22 a 45 anos</td>
+        </tr>
+        <tr>
+          <td>💅 Interesses</td>
+          <td>Salão de beleza, Cosméticos, Maquiagem, Spa, Produtos para cabelo</td>
+        </tr>
+        <tr>
+          <td>📲 Destino</td>
+          <td>WhatsApp</td>
+        </tr>
+        <tr>
+          <td>🔘 Botão de ação</td>
+          <td>"Enviar mensagem pelo WhatsApp"</td>
+        </tr>
+      </table>
+      <div class="callout-gold" style="margin-top:16px;">
+        💡 Não complique o público no começo. Sem filtros demais, sem restrições demais. Deixe o algoritmo trabalhar — ele é bom nisso quando tem espaço para aprender.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 6 -->
+  <div class="step-block">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div class="step-title">Criando o anúncio — imagem, vídeo e texto</div>
+    </div>
+    <div class="card">
+      <p style="color:var(--white); font-weight:500; margin-bottom:14px;">📸 O criativo (a imagem ou vídeo):</p>
+      <div class="action"><span class="ic">✅</span><span><strong>Foto:</strong> antes e depois lado a lado — fundo limpo, boa iluminação, close nos cílios</span></div>
+      <div class="action"><span class="ic">✅</span><span><strong>Vídeo (recomendado):</strong> 10 a 15 segundos mostrando o resultado — vídeo bem feito tem alcance muito maior que foto</span></div>
+      <div class="action"><span class="ic">✅</span><span>Formato vertical (9:16) para Stories e Reels; quadrado (1:1) para o Feed</span></div>
+
+      <div class="callout-warn" style="margin-top:16px;">
+        <strong>❌ O que NÃO fazer no criativo:</strong><br>
+        — Foto escura ou borrada — mata o anúncio na hora<br>
+        — Escrever muito texto em cima da imagem<br>
+        — Usar foto de baixa resolução ou tirada com iluminação ruim<br>
+        — Usar foto do Google — além de ilegal, não converte
+      </div>
+
+      <p style="color:var(--white); font-weight:500; margin-top:22px; margin-bottom:14px;">✍️ Exemplos de texto para o anúncio:</p>
+
+      <div class="ad-example">
+        <span class="ad-label">Exemplo 1 — Rotina / Praticidade</span>
+        Acorde linda todos os dias sem precisar de rímel. Extensão de cílios em [sua cidade] a partir de R$80. Clique e agende pelo WhatsApp 👇
+      </div>
+
+      <div class="ad-example">
+        <span class="ad-label">Exemplo 2 — Transformação / Emoção</span>
+        Seus olhos contam uma história — deixa eu contar a mais linda. ✨ Extensão de cílios fio a fio em [sua cidade]. Resultado natural, duradouro e que faz todo mundo perguntar "o que você fez nos olhos?". Agenda aberta essa semana. Me chama no WhatsApp 💛
+      </div>
+
+      <div class="ad-example">
+        <span class="ad-label">Exemplo 3 — Prova Social / Urgência real</span>
+        Já são mais de [X] clientes que acordam lindas todo dia por aqui ✨ Extensão de cílios em [sua cidade] — agenda quase cheia essa semana. Se você sempre quis fazer e nunca foi, esse é o momento. Me chama no WhatsApp e a gente resolve 🖤
+      </div>
+
+      <div class="callout-pink">
+        💡 <strong>Dica de especialista:</strong> o texto precisa falar com a emoção da mulher, não só informar o preço. Ela não compra cílios — ela compra a sensação de acordar linda, de se sentir segura, de chamar atenção. Escreva sempre pensando nisso.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">✦ Lendo os resultados</div>
+  <h2 style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--white); margin-bottom:6px;">O anúncio está funcionando?</h2>
+  <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">O que cada situação significa e o que fazer</p>
+
+  <div class="diagnose-block">
+    <h4>😶 Rodou 3 dias e não chegou nenhuma mensagem</h4>
+    <p>O problema está no <strong>criativo (foto ou vídeo)</strong>. A imagem não está chamando atenção. Troque por uma com mais impacto visual e teste de novo.</p>
+  </div>
+
+  <div class="diagnose-block">
+    <h4>💬 Chegam mensagens, mas ninguém agenda</h4>
+    <p>O problema está no <strong>atendimento pelo WhatsApp</strong>. Revise como você responde — seja mais rápida, mais calorosa e já proponha um horário concreto.</p>
+  </div>
+
+  <div class="diagnose-block">
+    <h4>📅 Agendaram mas não apareceram</h4>
+    <p><strong>Confirme sempre 1 dia antes.</strong> Mande uma mensagem calorosa relembrando o horário. Quem confirma tem muito menos falta.</p>
+  </div>
+
+  <div class="diagnose-block">
+    <h4>📉 Funcionou na primeira semana e parou</h4>
+    <p>Normal — o público local se esgota. Hora de <strong>trocar o criativo</strong> (nova foto ou vídeo) e, se precisar, ampliar levemente o raio de localização.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">✦ Para não esquecer</div>
+  <h2 style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--white); margin-bottom:20px;">Regras de ouro</h2>
+
+  <div class="card">
+    <div class="tip-item"><div class="dot"></div><span>Comece com <strong>R$10 a R$15 por dia</strong> — suficiente para aprender sem desperdiçar</span></div>
+    <div class="tip-item"><div class="dot"></div><span>Não mexa na campanha nos <strong>primeiros 3 dias</strong> — deixe o algoritmo trabalhar</span></div>
+    <div class="tip-item"><div class="dot"></div><span>A foto ou vídeo é o que mais importa — <strong>invista tempo no criativo</strong></span></div>
+    <div class="tip-item"><div class="dot"></div><span>O anúncio traz a mensagem — quem converte é <strong>você no WhatsApp</strong></span></div>
+    <div class="tip-item"><div class="dot"></div><span>Sem portfólio, sem resultado — a base é sempre o <strong>trabalho que você já fez</strong></span></div>
+    <div class="tip-item"><div class="dot"></div><span>Use objetivo <strong>"Mensagens"</strong>, não "Tráfego" — converte muito mais para WhatsApp</span></div>
+    <div class="tip-item"><div class="dot"></div><span>O texto do anúncio precisa falar com a <strong>emoção</strong>, não só com o preço</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>✦ <span>Tharcy Beauty</span> — Material exclusivo para alunas ✦</p>
+</div>
+
+</body>
+</html>
