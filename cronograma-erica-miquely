@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cronograma — Érica Miquely | Tharcy Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #f0ece4;
+      font-family: 'Jost', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px;
+    }
+
+    .container { max-width: 920px; margin: 0 auto; }
+
+    .brand {
+      text-align: center;
+      letter-spacing: .3em;
+      font-size: 11px;
+      font-weight: 500;
+      color: #e8a0bf;
+      margin-bottom: 16px;
+    }
+    .line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,.4), rgba(232,160,191,.4), rgba(176,142,224,.4), transparent);
+      max-width: 400px;
+      margin: 16px auto;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 6vw, 50px);
+      font-weight: 600;
+      text-align: center;
+      color: #f0ece4;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      font-weight: 300;
+      font-size: 15px;
+      color: #a09880;
+      letter-spacing: .05em;
+      margin-bottom: 4px;
+    }
+    .tag {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: .25em;
+      color: #a09880;
+      font-weight: 500;
+      margin-top: 8px;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-2px); }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+    .card-top-left { display: flex; align-items: baseline; gap: 8px; }
+    .date-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .weekday { font-size: 12px; color: #a09880; font-weight: 300; letter-spacing: .05em; }
+    .dia-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; }
+
+    .course-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #f0ece4;
+      margin-bottom: 6px;
+    }
+    .schedule-bar {
+      font-size: 11px;
+      color: #a09880;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .blocks { display: flex; flex-direction: column; gap: 12px; }
+    .block { padding-left: 12px; border-left: 2px solid rgba(255,255,255,.1); }
+    .block-period { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+    .block-icon { font-size: 13px; }
+    .period-text { font-size: 10px; letter-spacing: .15em; color: #a09880; font-weight: 500; }
+    .block-desc { font-size: 14px; color: #f0ece4; margin-bottom: 2px; }
+    .block-detail { font-size: 11px; color: #7a7060; font-style: italic; line-height: 1.5; }
+
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 12px;
+      background: rgba(176,142,224,.1);
+      border: 1px solid rgba(176,142,224,.25);
+      border-radius: 20px;
+      font-size: 11px;
+      color: #b08ee0;
+      letter-spacing: .05em;
+    }
+
+    /* SEÇÃO CAFÉ */
+    .section { margin-bottom: 48px; }
+    .section-head { text-align: center; margin-bottom: 28px; }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #f0ece4;
+      margin-bottom: 8px;
+    }
+    .section-sub { font-size: 13px; color: #a09880; font-weight: 300; }
+
+    /* TOGGLE NÃO TOMA */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: fit-content;
+    }
+    .toggle-box {
+      width: 44px;
+      height: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px;
+      position: relative;
+      transition: background .25s;
+    }
+    .toggle-box::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #a09880;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform .25s, background .25s;
+    }
+    .toggle-wrap.active .toggle-box {
+      background: rgba(232,160,191,.3);
+      border-color: #e8a0bf;
+    }
+    .toggle-wrap.active .toggle-box::after {
+      transform: translateX(20px);
+      background: #e8a0bf;
+    }
+    .toggle-label {
+      font-size: 13px;
+      color: #a09880;
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .toggle-wrap.active .toggle-label { color: #e8a0bf; }
+
+    /* CAMPO DE TEXTO */
+    .cafe-field {
+      transition: opacity .3s, max-height .3s;
+      overflow: hidden;
+      max-height: 200px;
+    }
+    .cafe-field.hidden {
+      opacity: 0;
+      max-height: 0;
+      pointer-events: none;
+    }
+
+    .cafe-field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .15em;
+      color: #a09880;
+      margin-bottom: 10px;
+    }
+    .cafe-field textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 16px;
+      color: #f0ece4;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      resize: none;
+      outline: none;
+      transition: border-color .2s;
+      line-height: 1.6;
+    }
+    .cafe-field textarea:focus { border-color: #c9a84c; }
+    .cafe-field textarea::placeholder { color: #3a3530; }
+
+    /* BOTÃO */
+    .btn-wrap { text-align: center; margin-top: 28px; }
+    .btn-confirm {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #c9a84c, #e8a0bf);
+      border: none;
+      border-radius: 50px;
+      padding: 16px 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: #0d0d0d;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-confirm:hover { opacity: .9; transform: scale(1.02); }
+
+    /* FOOTER */
+    .footer { text-align: center; }
+    .footer-text { font-size: 13px; color: #7a7060; font-weight: 300; margin-top: 8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="brand">THARCY BEAUTY</div>
+  <div class="line"></div>
+  <h1>Cronograma de Curso</h1>
+  <p class="subtitle">Érica Miquely · Junho 2026</p>
+  <div class="line"></div>
+  <p class="tag">TÉCNICAS GRINGAS</p>
+
+  <!-- DIAS -->
+  <div class="grid">
+
+    <!-- DIA 01 -->
+    <div class="card" style="border-top: 3px solid #c9a84c;">
+      <div class="card-top">
+        <div class="card-top-left">
+          <span class="date-num" style="color:#c9a84c;">15</span>
+          <span class="weekday">Segunda-feira</span>
+        </div>
+        <span class="dia-label" style="color:#c9a84c;">DIA 01</span>
+      </div>
+      <p class="course-name">Técnicas Gringas</p>
+      <p class="schedule-bar">🕗 08:30 – 12:00 · Almoço · 14:00 – 18:00</p>
+      <div class="blocks">
+        <div class="block">
+          <div class="block-period">
+            <span class="block-icon">🌅</span>
+            <span class="period-text">08:30 – 12:00</span>
+          </div>
+          <p class="block-desc">Aula Teórica</p>
+          <p class="block-detail">Fundamentos e teoria das técnicas internacionais</p>
+        </div>
+        <div class="block">
+          <div class="block-period">
+            <span class="block-icon">✨</span>
+            <span class="period-text">14:00 – 18:00</span>
+          </div>
+          <p class="block-desc">Aula Prática</p>
+          <p class="block-detail">Primeiras aplicações com supervisão da Tharcy</p>
+        </div>
+      </div>
+      <span class="badge">☕ Café da manhã incluso</span>
+    </div>
+
+    <!-- DIA 02 -->
+
+    <div class="card" style="border-top: 3px solid #e8a0bf;">
+      <div class="card-top">
+        <div class="card-top-left">
+          <span class="date-num" style="color:#e8a0bf;">16</span>
+          <span class="weekday">Terça-feira</span>
+        </div>
+        <span class="dia-label" style="color:#e8a0bf;">DIA 02</span>
+      </div>
+      <p class="course-name">Técnicas Gringas</p>
+      <p class="schedule-bar">🕗 08:00 – 12:00 · Almoço · 14:00 – 18:00</p>
+      <div class="blocks">
+        <div class="block">
+          <div class="block-period">
+            <span class="block-icon">👁️</span>
+            <span class="period-text">08:00 – 12:00</span>
+          </div>
+          <p class="block-desc">Prática Intensiva em Modelo Real</p>
+          <p class="block-detail">Aplicação completa com acompanhamento</p>
+        </div>
+        <div class="block">
+          <div class="block-period">
+            <span class="block-icon">👁️</span>
+            <span class="period-text">14:00 – 17:00</span>
+          </div>
+          <p class="block-desc">Continuação da Prática</p>
+        </div>
+        <div class="block">
+          <div class="block-period">
+            <span class="block-icon">📸</span>
+            <span class="period-text">17:00 – 18:00</span>
+          </div>
+          <p class="block-desc">Produção de Conteúdo</p>
+          <p class="block-detail">Fotos e vídeos para o portfólio profissional</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CAFÉ DA MANHÃ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="line"></div>
+      <h2>Café da Manhã ☕</h2>
+      <p class="section-sub">O café da manhã é oferecido no dia 15 (primeiro dia). Conta pra mim o que você gosta!</p>
+    </div>
+
+    <!-- Toggle não toma -->
+    <div class="toggle-wrap" id="toggleNao" onclick="toggleNaoCafe()">
+      <div class="toggle-box"></div>
+      <span class="toggle-label">Não tomo café da manhã</span>
+    </div>
+
+    <!-- Campo de texto -->
+    <div class="cafe-field" id="cafeField">
+      <label>O QUE VOCÊ GOSTA NO CAFÉ DA MANHÃ? ✍️</label>
+      <textarea id="cafeTexto" rows="4" placeholder="Ex: gosto de suco de laranja, pão de queijo, frutas... ou me conta o que você curte!"></textarea>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn-confirm" onclick="enviarWhatsApp()">
+        ✅ Enviar preferências pelo WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="line"></div>
+    <p class="footer-text">Qualquer dúvida, entre em contato diretamente com a Tharcy 🤍</p>
+  </div>
+
+</div>
+
+<script>
+  let naoCafe = false;
+
+  function toggleNaoCafe() {
+    naoCafe = !naoCafe;
+    const toggle = document.getElementById('toggleNao');
+    const field = document.getElementById('cafeField');
+    toggle.classList.toggle('active', naoCafe);
+    field.classList.toggle('hidden', naoCafe);
+    if (naoCafe) document.getElementById('cafeTexto').value = '';
+  }
+
+  function enviarWhatsApp() {
+    const texto = document.getElementById('cafeTexto').value.trim();
+
+    if (!naoCafe && !texto) {
+      alert('Conta pra gente o que você gosta no café da manhã, ou marque que não toma 😊');
+      return;
+    }
+
+    let msg = '☕ *Preferências de Café da Manhã — Érica Miquely*\n\n';
+
+    if (naoCafe) {
+      msg += '❌ Não tomo café da manhã.';
+    } else {
+      msg += `*O que eu gosto:*\n${texto}`;
+    }
+
+    const numero = '5566992227689';
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>
