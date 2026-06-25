@@ -42,7 +42,9 @@
   .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; animation:fadeUp 0.5s ease both; }
   .card-title { font-family:'Pacifico',cursive; font-size:20px; color:var(--lilac); margin-bottom:16px; }
   .area-grid { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
-  .area-item { background:var(--card2); border:1px solid rgba(184,159,224,0.25); border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700; color:var(--white); }
+  .area-item { background:var(--card2); border:1px solid rgba(184,159,224,0.25); border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700; color:var(--white); text-decoration:none; transition: border-color 0.2s, background 0.2s; }
+  .area-item:hover { border-color:rgba(184,159,224,0.6); background:rgba(184,159,224,0.18); }
+  .area-arrow { margin-left:auto; color:var(--lilac); font-size:16px; }
   .area-icon { width:36px; height:36px; border-radius:10px; background:var(--lilac-soft); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
   .ou-divider { text-align:center; font-size:11px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; padding:2px 0; }
   .aperfeiçoamento-grid { display:flex; flex-direction:column; gap:8px; }
@@ -109,7 +111,7 @@
     <div class="section-label">Escolha sua área</div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Você poderá escolher <strong style="color:var(--white);">UMA área</strong> para aperfeiçoamento:</p>
     <div class="area-grid">
-      <div class="area-item"><div class="area-icon">👁️</div>Extensão de Cílios</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGAICXsgwtr187ZNnBABl5Ez-J_bVfegONDZbof58TYHDdzQ/viewform?usp=publish-editor" target="_blank" class="area-item"><div class="area-icon">👁️</div>Extensão de Cílios<span class="area-arrow">→</span></a>
       <div class="ou-divider">ou</div>
       <div class="area-item"><div class="area-icon">✨</div>Sobrancelhas</div>
       <div class="ou-divider">ou</div>
